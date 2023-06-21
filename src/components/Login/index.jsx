@@ -11,6 +11,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import solesLogo from "/public/soles-logo.png";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -21,7 +22,7 @@ const Login = () => {
       <Image
         // objectFit="cover"
         w="15rem"
-        src="public/soles-logo.png"
+        src={solesLogo}
         m="auto"
         p={4}
         pt="20vh"

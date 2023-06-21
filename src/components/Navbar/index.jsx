@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import solesLogo from "/public/soles-logo.png";
 
 const Navbar = () => {
   return (
@@ -56,7 +57,7 @@ const Navbar = () => {
       <Spacer display={["flex", "flex", "none", "none"]} />
 
       <NavLink to="/home">
-        <Image w="15rem" src="public/soles-logo.png" m="auto" p={10}></Image>
+        <Image w="15rem" src={solesLogo} m="auto" p={10}></Image>
       </NavLink>
       <Spacer />
 
