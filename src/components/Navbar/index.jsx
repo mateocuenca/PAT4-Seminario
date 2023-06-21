@@ -56,12 +56,7 @@ const Navbar = () => {
       <Spacer display={["flex", "flex", "none", "none"]} />
 
       <NavLink to="/home">
-        <Image
-          w="15rem"
-          src="src/assets/soles-logo.png"
-          m="auto"
-          p={10}
-        ></Image>
+        <Image w="15rem" src="public/soles-logo.png" m="auto" p={10}></Image>
       </NavLink>
       <Spacer />
 
