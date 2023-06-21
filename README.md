@@ -10,6 +10,10 @@ La [fundación Soles](https://www.soles.org.ar/) es una asociación civil compue
 
 Con el objetivo de optimizar la asignación de tareas a voluntarios de la fundación y su seguimiento se propone un análisis y diseño de una aplicación de software que permita a la fundación gestionar de forma eficiente sus voluntarios. La aplicación permitirá asignar tareas de manera efectiva, hacer un seguimiento de las actividades de los voluntarios y generar reportes y métricas que permitan hacer una evaluación de la gestión de los voluntarios.
 
+## Para acceder a la aplicación
+
+Haga click [aquí](https://pat-4-seminario-git-development-mateocuenca.vercel.app/login) para acceder al mvp de la aplicación
+
 ## Tecnologías aplicadas
 * HTML5
 * CSS
