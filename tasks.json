@@ -1,0 +1,52 @@
+{
+  "idArea": 1,
+  "nombre": "area1",
+  "voluntarios": [],
+  "coordinadorArea": null,
+  "tareas": [
+    {
+      "idTarea": 1,
+      "descripcion": "Descripción de la tarea 1",
+      "nombreVoluntario": "Voluntario 1",
+      "fechaFinalizacion": "20-06-2023"
+    },
+    {
+      "idTarea": 2,
+      "descripcion": "Descripción de la tarea 2",
+      "nombreVoluntario": "Voluntario 2",
+      "fechaFinalizacion": "21-06-2023"
+    },
+    {
+      "idTarea": 3,
+      "descripcion": "Descripción de la tarea 3",
+      "nombreVoluntario": "Voluntario 3",
+      "fechaFinalizacion": "21-06-2023"
+    },
+    {
+      "idTarea": 4,
+      "descripcion": "Descripción de la tarea 4",
+      "nombreVoluntario": "Voluntario 4",
+      "fechaFinalizacion": "22-06-2023"
+    },
+    {
+      "idTarea": 5,
+      "descripcion": "Descripción de la tarea 5",
+      "nombreVoluntario": "Voluntario 5",
+      "fechaFinalizacion": "23-06-2023"
+    },
+    {
+      "idTarea": 6,
+      "descripcion": "Descripción de la tarea 6",
+      "nombreVoluntario": "Voluntario 6",
+      "fechaFinalizacion": "24-06-2023"
+    },
+    {
+      "idTarea": 7,
+      "descripcion": "Descripción de la tarea 7",
+      "nombreVoluntario": "Voluntario 7",
+      "fechaFinalizacion": "20-06-2023"
+    }
+  ],
+  "cantidadVoluntariosAsignados": 0,
+  "cantidadTareasAsignadas": 1
+}

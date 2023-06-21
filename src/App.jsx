@@ -9,6 +9,7 @@ function App() {
         <Route path="/" element={<h1>Landing Page</h1>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/home" element={<Home />}></Route>
+        <Route path="/home/:category" element={<Home />}></Route>
       </Routes>
     </>
   );
