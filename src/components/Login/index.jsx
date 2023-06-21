@@ -21,7 +21,7 @@ const Login = () => {
       <Image
         // objectFit="cover"
         w="15rem"
-        src="src/assets/soles-logo.png"
+        src="public/soles-logo.png"
         m="auto"
         p={4}
         pt="20vh"
