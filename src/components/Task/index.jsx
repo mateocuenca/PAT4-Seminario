@@ -55,6 +55,18 @@ const Task = (props) => {
     return false;
   };
 
+  const isPast = function (date) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set the time of today's date to midnight (00:00:00)
+
+    // Compare the time values of the dates
+    if (today.getTime() > date.getTime()) {
+      return true;
+    }
+
+    return false;
+  };
+
   const isTomorrow = function (date) {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -111,7 +123,7 @@ const Task = (props) => {
           color={
             isToday(props.taskDate)
               ? "green"
-              : isYesterday(props.taskDate)
+              : isYesterday(props.taskDate) || isPast(props.taskDate)
               ? "red"
               : isTomorrow(props.taskDate)
               ? "blue"
