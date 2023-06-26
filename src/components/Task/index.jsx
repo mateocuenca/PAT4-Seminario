@@ -2,7 +2,16 @@ import React, { useState } from "react";
 import {
   Button,
   Checkbox,
+  Divider,
+  FocusLock,
   HStack,
+  IconButton,
+  Popover,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverTrigger,
+  Spacer,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -17,6 +26,10 @@ import {
 } from "@chakra-ui/react";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
+import { EditIcon } from "@chakra-ui/icons";
+import { Form } from "react-router-dom";
+import PopoverForm from "../PopoverModificarTarea";
+import PopoverModificarTarea from "../PopoverModificarTarea";
 
 const Task = (props) => {
   const [checked, setChecked] = useState(false);
@@ -70,7 +83,6 @@ const Task = (props) => {
   const isTomorrow = function (date) {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-
     console.log(tomorrow);
 
     if (tomorrow.toDateString() === date.toDateString()) {
@@ -95,11 +107,16 @@ const Task = (props) => {
           fontSize="lg"
           textDecoration={checked ? "line-through" : "none"}
           onClick={onOpen}
-          cursor="pointer"
+          // cursor="pointer"
         >
           {props.taskTitle}
         </Text>
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Spacer />
+        <PopoverModificarTarea
+          taskTitle={props.taskTitle}
+          taskDateString={props.taskDateString}
+        />
+        {/* <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Modificar Tarea</ModalHeader>
@@ -115,11 +132,11 @@ const Task = (props) => {
               </Button>
             </ModalFooter>
           </ModalContent>
-        </Modal>
+        </Modal> */}
       </HStack>
       <HStack justifyContent="start" py={2} px={10}>
         <Text
-          fontSize="md"
+          fontSize="sm"
           color={
             isToday(props.taskDate)
               ? "green"
@@ -153,7 +170,7 @@ const Task = (props) => {
               }`}
         </Text>
         <Text
-          fontSize="md"
+          fontSize="sm"
           color="orange.500"
           fontWeight="bold"
           display="flex"
