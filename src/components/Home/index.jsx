@@ -31,7 +31,7 @@ const Home = () => {
             ? "Hoy"
             : category === "upcoming"
             ? "Más Adelante"
-            : "Inbox"}
+            : "Mis Tareas"}
         </Heading>
         <TaskContainer tasks={tasks} />
       </Container>

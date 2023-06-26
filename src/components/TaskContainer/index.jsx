@@ -2,6 +2,7 @@ import { StackDivider, VStack } from "@chakra-ui/react";
 import React from "react";
 import Task from "../Task";
 import { useParams } from "react-router-dom";
+import PopoverAgregarTarea from "../PopoverAgregarTarea";
 
 const TaskContainer = ({ tasks }) => {
   const stringToDate = function (dateString) {
@@ -11,6 +12,15 @@ const TaskContainer = ({ tasks }) => {
     const year = parseInt(dateComponents[2]);
 
     return new Date(year, month, day);
+  };
+
+  const convertDateFormat = function (dateString) {
+    const parts = dateString.split("-");
+    const day = parts[0];
+    const month = parts[1];
+    const year = parts[2];
+
+    return `${year}-${month}-${day}`;
   };
 
   let { category } = useParams();
@@ -64,10 +74,12 @@ const TaskContainer = ({ tasks }) => {
           <Task
             taskTitle={task.descripcion}
             taskDate={stringToDate(task.fechaFinalizacion)}
+            taskDateString={convertDateFormat(task.fechaFinalizacion)}
             taskOwner={task.nombreVoluntario}
             key={task.idTarea}
           />
         ))}
+      <PopoverAgregarTarea />
     </VStack>
   );
 };
