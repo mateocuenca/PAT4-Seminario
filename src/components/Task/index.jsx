@@ -59,8 +59,6 @@ const Task = (props) => {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
 
-    console.log(date);
-
     if (yesterday.toDateString() === date.toDateString()) {
       return true;
     }
@@ -83,7 +81,6 @@ const Task = (props) => {
   const isTomorrow = function (date) {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    console.log(tomorrow);
 
     if (tomorrow.toDateString() === date.toDateString()) {
       return true;
@@ -115,6 +112,8 @@ const Task = (props) => {
         <PopoverModificarTarea
           taskTitle={props.taskTitle}
           taskDateString={props.taskDateString}
+          taskId={props.taskId}
+          onTasksReload={props.onTasksReload}
         />
         {/* <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
