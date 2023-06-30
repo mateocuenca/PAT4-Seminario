@@ -4,7 +4,7 @@ import Task from "../Task";
 import { useParams } from "react-router-dom";
 import PopoverAgregarTarea from "../PopoverAgregarTarea";
 
-const TaskContainer = ({ tasks }) => {
+const TaskContainer = ({ tasks, onTasksReload }) => {
   const stringToDate = function (dateString) {
     const dateComponents = dateString.split("-");
     const day = parseInt(dateComponents[0]);
@@ -76,10 +76,12 @@ const TaskContainer = ({ tasks }) => {
             taskDate={stringToDate(task.fechaFinalizacion)}
             taskDateString={convertDateFormat(task.fechaFinalizacion)}
             taskOwner={task.nombreVoluntario}
+            taskId={task.idTarea}
+            onTasksReload={onTasksReload}
             key={task.idTarea}
           />
         ))}
-      <PopoverAgregarTarea />
+      <PopoverAgregarTarea onTasksReload={onTasksReload} />
     </VStack>
   );
 };

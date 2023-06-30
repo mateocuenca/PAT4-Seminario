@@ -33,10 +33,9 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const API_ENDPOINT =
-    "https://fundacion-soles-a03e1e3a84ae.herokuapp.com/api/v1/auth/backLogin";
-
   const handleLogin = async (e) => {
+    const API_ENDPOINT =
+      "https://fundacion-soles-a03e1e3a84ae.herokuapp.com/api/v1/auth/backLogin";
     e.preventDefault(); // Prevent the default form submission behavior
 
     // Create an object containing the username and password
@@ -57,11 +56,9 @@ const Login = () => {
 
       // Process the response and handle successful login
       // For example, you can redirect the user to a dashboard page
-      console.log(response.data); // Assuming the API returns some data
 
       // Save the token to local storage or state for future use if needed
       sessionStorage.setItem("token", response.data.accessToken);
-      console.log(sessionStorage.getItem("token"));
 
       // Redirect to the '/home' route
       navigate("/home");
