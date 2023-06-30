@@ -146,7 +146,7 @@ const PopoverModificarTarea = ({
         closeOnBlur={false}
       >
         <PopoverTrigger>
-          <IconButton size="sm" icon={<EditIcon />} color="orange.500" />
+          <IconButton size="sm" icon={<EditIcon />} color="black" />
         </PopoverTrigger>
         <PopoverContent p={5}>
           <FocusLock returnFocus persistentFocus={false}>

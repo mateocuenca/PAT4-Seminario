@@ -26,10 +26,11 @@ import {
 } from "@chakra-ui/react";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
-import { EditIcon } from "@chakra-ui/icons";
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Form } from "react-router-dom";
 import PopoverForm from "../PopoverModificarTarea";
 import PopoverModificarTarea from "../PopoverModificarTarea";
+import axios from "axios";
 
 const Task = (props) => {
   const [checked, setChecked] = useState(false);
@@ -89,6 +90,27 @@ const Task = (props) => {
     return false;
   };
 
+  const handleDeleteTask = async () => {
+    const API_ENDPOINT =
+      "https://fundacion-soles-a03e1e3a84ae.herokuapp.com/tareas/" +
+      props.taskId;
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    };
+
+    try {
+      const response = await axios.delete(API_ENDPOINT, config);
+      console.log(response);
+      props.onTasksReload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <HStack gap={4}>
@@ -114,6 +136,13 @@ const Task = (props) => {
           taskDateString={props.taskDateString}
           taskId={props.taskId}
           onTasksReload={props.onTasksReload}
+        />
+        <IconButton
+          aria-label="Eliminar tarea"
+          icon={<DeleteIcon />}
+          size="sm"
+          color="red"
+          onClick={handleDeleteTask}
         />
         {/* <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
