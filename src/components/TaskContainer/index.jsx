@@ -81,7 +81,7 @@ const TaskContainer = ({ tasks, onTasksReload }) => {
             key={task.idTarea}
           />
         ))}
-      <PopoverAgregarTarea />
+      <PopoverAgregarTarea onTasksReload={onTasksReload} />
     </VStack>
   );
 };
