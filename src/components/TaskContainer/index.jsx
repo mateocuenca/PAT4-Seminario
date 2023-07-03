@@ -1,7 +1,7 @@
 import { StackDivider, VStack } from "@chakra-ui/react";
 import React from "react";
 import Task from "../Task";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import PopoverAgregarTarea from "../PopoverAgregarTarea";
 
 const TaskContainer = ({ tasks, onTasksReload }) => {
@@ -24,6 +24,8 @@ const TaskContainer = ({ tasks, onTasksReload }) => {
   };
 
   let { category } = useParams();
+
+  let location = useLocation();
 
   const isToday = function (date) {
     const today = new Date();
@@ -48,9 +50,9 @@ const TaskContainer = ({ tasks, onTasksReload }) => {
   };
 
   const tasksByCategory = tasks.filter((task) => {
-    if (category === "today") {
+    if (location.pathname === "/today") {
       return isToday(stringToDate(task.fechaFinalizacion));
-    } else if (category === "upcoming") {
+    } else if (location.pathname === "/upcoming") {
       return isUpcoming(stringToDate(task.fechaFinalizacion));
     } else {
       return true;

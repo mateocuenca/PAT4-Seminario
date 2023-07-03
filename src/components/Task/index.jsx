@@ -26,7 +26,7 @@ import {
 } from "@chakra-ui/react";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { CalendarIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Form } from "react-router-dom";
 import PopoverForm from "../PopoverModificarTarea";
 import PopoverModificarTarea from "../PopoverModificarTarea";
@@ -118,12 +118,12 @@ const Task = (props) => {
           colorScheme="orange"
           size="lg"
           spacing="1rem"
-          borderColor="orange.500"
+          borderColor="orange.600"
           onChange={toggleCheck}
         ></Checkbox>
         <Text
-          color="orange.600"
-          fontSize="lg"
+          color="orange.700"
+          fontSize={["sm", "sm", "md", "md"]}
           textDecoration={checked ? "line-through" : "none"}
           onClick={onOpen}
           // cursor="pointer"
@@ -164,7 +164,7 @@ const Task = (props) => {
       </HStack>
       <HStack justifyContent="start" py={2} px={10}>
         <Text
-          fontSize="sm"
+          fontSize={["sm", "sm", "sm", "sm"]}
           color={
             isToday(props.taskDate)
               ? "green"
@@ -180,9 +180,8 @@ const Task = (props) => {
           gap={2}
           textDecoration={checked ? "line-through" : "none"}
           onClick={onOpen}
-          cursor="pointer"
         >
-          <CalendarTodayIcon sx={{}} />{" "}
+          <CalendarIcon />{" "}
           {isToday(props.taskDate)
             ? "Hoy"
             : isYesterday(props.taskDate)
@@ -198,7 +197,7 @@ const Task = (props) => {
               }`}
         </Text>
         <Text
-          fontSize="sm"
+          fontSize={("xs", "sm", "sm", "sm")}
           color="orange.500"
           fontWeight="bold"
           display="flex"
@@ -206,9 +205,8 @@ const Task = (props) => {
           gap={2}
           textDecoration={checked ? "line-through" : "none"}
           onClick={onOpen}
-          cursor="pointer"
         >
-          <PersonIcon />
+          <PersonIcon sx={{ fontSize: "20px" }} />
           {props.taskOwner}
         </Text>
       </HStack>
