@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import heroImage from "/public/hero.jpg";
 
 const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
   return (
@@ -176,7 +177,7 @@ const LandingPage = () => {
       <Hero
         title="Sistema de Gestión de Tareas de Soles"
         subtitle="Tus tareas en un solo lugar"
-        image="../../public/hero.jpg"
+        image={heroImage}
         ctaText="Iniciar sesión"
         ctaLink="/login"
       />
