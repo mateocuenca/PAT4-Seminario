@@ -1,8 +1,9 @@
-import { StackDivider, VStack } from "@chakra-ui/react";
+import { StackDivider, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import Task from "../Task";
 import { useLocation } from "react-router-dom";
 import PopoverAgregarTarea from "../PopoverAgregarTarea";
+import Footer from "../Footer";
 
 const TaskContainer = ({ tasks, onTasksReload }) => {
   const stringToDate = function (dateString) {
@@ -58,31 +59,34 @@ const TaskContainer = ({ tasks, onTasksReload }) => {
   });
 
   return (
-    <VStack
-      marginTop={8}
-      divider={<StackDivider borderColor="orange.300" />}
-      spacing={4}
-      align="stretch"
-    >
-      {tasksByCategory
-        .sort((a, b) => {
-          const dateA = stringToDate(a.fechaFinalizacion);
-          const dateB = stringToDate(b.fechaFinalizacion);
-          return dateA - dateB;
-        })
-        .map((task) => (
-          <Task
-            taskTitle={task.descripcion}
-            taskDate={stringToDate(task.fechaFinalizacion)}
-            taskDateString={convertDateFormat(task.fechaFinalizacion)}
-            taskOwner={task.nombreVoluntario}
-            taskId={task.idTarea}
-            onTasksReload={onTasksReload}
-            key={task.idTarea}
-          />
-        ))}
-      <PopoverAgregarTarea onTasksReload={onTasksReload} />
-    </VStack>
+    <>
+      <VStack
+        marginTop={8}
+        divider={<StackDivider borderColor="orange.300" />}
+        spacing={4}
+        align="stretch"
+      >
+        {tasksByCategory
+          .sort((a, b) => {
+            const dateA = stringToDate(a.fechaFinalizacion);
+            const dateB = stringToDate(b.fechaFinalizacion);
+            return dateA - dateB;
+          })
+          .map((task) => (
+            <Task
+              taskTitle={task.descripcion}
+              taskDate={stringToDate(task.fechaFinalizacion)}
+              taskDateString={convertDateFormat(task.fechaFinalizacion)}
+              taskOwner={task.nombreVoluntario}
+              taskId={task.idTarea}
+              onTasksReload={onTasksReload}
+              key={task.idTarea}
+            />
+          ))}
+        <PopoverAgregarTarea onTasksReload={onTasksReload} />
+      </VStack>
+      <Footer />
+    </>
   );
 };
 
