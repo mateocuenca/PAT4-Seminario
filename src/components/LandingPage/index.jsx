@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Container,
   Flex,
   Heading,
   Image,
@@ -11,8 +10,9 @@ import {
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import heroImage from "/public/hero.jpg";
+import solesLogo from "/public/soles-logo.png";
 
-const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
+/* const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
   return (
     <Text
       mb={{ base: isLast ? 0 : 8, sm: 0 }}
@@ -45,7 +45,7 @@ const MenuIcon = () => (
     <title>Menu</title>
     <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
   </svg>
-);
+); */
 
 const Header = (props) => {
   const [show, setShow] = useState(false);
@@ -121,6 +121,10 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
         w={{ base: "80%", md: "40%" }}
         align={["center", "center", "flex-start", "flex-start"]}
       >
+        <Box w={{ base: "80%", sm: "60%", md: "50%" }} mb={{ base: 12, md: 0 }}>
+          {/* TODO: Make this change every X secs */}
+          <Image src={solesLogo} size="100%" rounded="1rem" />
+        </Box>
         <Heading
           as="h1"
           size="xl"

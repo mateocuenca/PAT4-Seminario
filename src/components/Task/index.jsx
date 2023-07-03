@@ -1,40 +1,19 @@
 import React, { useState } from "react";
 import {
-  Button,
   Checkbox,
-  Divider,
-  FocusLock,
   HStack,
   IconButton,
-  Popover,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverTrigger,
   Spacer,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PersonIcon from "@mui/icons-material/Person";
 import { CalendarIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
-import { Form } from "react-router-dom";
-import PopoverForm from "../PopoverModificarTarea";
 import PopoverModificarTarea from "../PopoverModificarTarea";
 import axios from "axios";
 
 const Task = (props) => {
   const [checked, setChecked] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const toggleCheck = () => setChecked(!checked);
   const dayNames = [
     "Domingo",
@@ -125,8 +104,6 @@ const Task = (props) => {
           color="orange.700"
           fontSize={["sm", "sm", "md", "md"]}
           textDecoration={checked ? "line-through" : "none"}
-          onClick={onOpen}
-          // cursor="pointer"
         >
           {props.taskTitle}
         </Text>
@@ -144,23 +121,6 @@ const Task = (props) => {
           color="red"
           onClick={handleDeleteTask}
         />
-        {/* <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Modificar Tarea</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody></ModalBody>
-
-            <ModalFooter>
-              <Button colorScheme="orange" mr={3} onClick={onClose}>
-                Close
-              </Button>
-              <Button colorScheme="orange" variant="ghost">
-                Secondary Action
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal> */}
       </HStack>
       <HStack justifyContent="start" py={2} px={10}>
         <Text
@@ -179,7 +139,6 @@ const Task = (props) => {
           alignItems="center"
           gap={2}
           textDecoration={checked ? "line-through" : "none"}
-          onClick={onOpen}
         >
           <CalendarIcon />{" "}
           {isToday(props.taskDate)
@@ -204,7 +163,6 @@ const Task = (props) => {
           alignItems="center"
           gap={2}
           textDecoration={checked ? "line-through" : "none"}
-          onClick={onOpen}
         >
           <PersonIcon sx={{ fontSize: "20px" }} />
           {props.taskOwner}

@@ -10,27 +10,18 @@ import {
   Alert,
   AlertIcon,
   AlertTitle,
-  AlertDescription,
   Card,
   CardHeader,
   CardBody,
   Heading,
   CardFooter,
-  Divider,
-  Spacer,
 } from "@chakra-ui/react";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import { useState } from "react";
-import {
-  Form,
-  NavLink,
-  unstable_HistoryRouter,
-  useNavigate,
-} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import solesLogo from "/public/soles-logo.png";
 import axios from "axios";
-import { getTabScrollButtonUtilityClass } from "@mui/material";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -64,10 +55,7 @@ const Login = () => {
       // Save username to session storage
       sessionStorage.setItem("username", username);
 
-      // Process the response and handle successful login
-      // For example, you can redirect the user to a dashboard page
-
-      // Save the token to local storage or state for future use if needed
+      // Save the token to session storage or state for future use if needed
       sessionStorage.setItem("token", response.data.accessToken);
 
       // Redirect to the '/home' route
@@ -90,18 +78,15 @@ const Login = () => {
 
   return (
     <Container centerContent height="100vh" justifyContent="space-around">
-      <Card p={6} bgGradient="linear(to-r, #faf5e5, #Faf5e5)">
+      <Card p={6} bgGradient="linear(to-r, #faf5e5, #Faf5e5)" shadow="2xl">
         <VStack spacing={2}>
-          <Image
-            // objectFit="cover"
-            w="15rem"
-            src={solesLogo}
-            // m="auto"
-            p={4}
-            // pt="10vh"
-          ></Image>
+          <Image w="15rem" src={solesLogo} p={4}></Image>
           <CardHeader>
-            <Heading size={["sm", "sm", "md", "md"]} color="orange.800">
+            <Heading
+              size={["sm", "sm", "md", "md"]}
+              color="orange.900"
+              fontWeight="bold"
+            >
               Sistema de Gestión de Tareas
             </Heading>
           </CardHeader>
@@ -159,7 +144,11 @@ const Login = () => {
                   size="sm"
                   onClick={handleVisibleClick}
                 >
-                  {<VisibilityIcon />}
+                  {show ? (
+                    <ViewOffIcon boxSize={6} />
+                  ) : (
+                    <ViewIcon boxSize={6} />
+                  )}
                 </Button>
               </InputGroup>
             </FormControl>
@@ -169,7 +158,7 @@ const Login = () => {
           </form>
           <CardFooter>
             <NavLink
-              to="/register"
+              to="/"
               style={{ color: "#FFA600", fontWeight: "bold", fontSize: "15px" }}
             >
               ¿No tienes cuenta? Regístrate
