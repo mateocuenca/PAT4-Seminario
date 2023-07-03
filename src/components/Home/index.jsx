@@ -1,11 +1,5 @@
 import Navbar from "../Navbar";
-import {
-  Heading,
-  Container,
-  Spinner,
-  useDisclosure,
-  ScaleFade,
-} from "@chakra-ui/react";
+import { Heading, Container } from "@chakra-ui/react";
 import TaskContainer from "../TaskContainer";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
@@ -15,8 +9,6 @@ import SpinnerLoad from "../SpinnerLoad";
 const Home = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  let { category } = useParams();
 
   let location = useLocation();
 

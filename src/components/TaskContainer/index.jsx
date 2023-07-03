@@ -1,7 +1,7 @@
 import { StackDivider, VStack } from "@chakra-ui/react";
 import React from "react";
 import Task from "../Task";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import PopoverAgregarTarea from "../PopoverAgregarTarea";
 
 const TaskContainer = ({ tasks, onTasksReload }) => {
@@ -22,8 +22,6 @@ const TaskContainer = ({ tasks, onTasksReload }) => {
 
     return `${year}-${month}-${day}`;
   };
-
-  let { category } = useParams();
 
   let location = useLocation();
 

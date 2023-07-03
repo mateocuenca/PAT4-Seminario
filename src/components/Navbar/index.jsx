@@ -1,10 +1,8 @@
 import {
   Flex,
-  Text,
   Button,
   Spacer,
   HStack,
-  IconButton,
   Menu,
   MenuButton,
   MenuList,
@@ -18,18 +16,15 @@ import {
   DrawerHeader,
   DrawerBody,
   VStack,
-  DrawerFooter,
   Divider,
-  Avatar,
 } from "@chakra-ui/react";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
-import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { NavLink } from "react-router-dom";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import solesLogo from "/public/soles-logo.png";
 import { useRef } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import InsightsIcon from "@mui/icons-material/Insights";
 import TodayIcon from "@mui/icons-material/Today";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -41,18 +36,10 @@ const Navbar = () => {
     <Flex
       as="nav"
       alignItems="center"
-      // bg="transparent"
       h="64px"
       p="40px"
       paddingTop={["100px", "100px", "120px", "120px", "120px"]}
-      // px={["20px", "60px", "100px", "100px", "500px"]}
       justifyContent="center"
-      // spacing="24px"
-      // position="fixed"
-      // top="0"
-      // left="0"
-      // right="0"
-      // zIndex={1}
     >
       <VStack
         gap={4}
@@ -128,21 +115,6 @@ const Navbar = () => {
           </Menu>
         </HStack>
         <Divider borderColor="orange.200" />
-
-        {/* <IconButton
-          aria-label="Ver Menú de navegación"
-          icon={<HamburgerIcon />}
-          colorScheme="orange"
-          variant="ghost"
-          display={["flex", "none", "none", "none"]}
-          ref={btnRef}
-          onClick={onOpen}
-          fontSize="40px"
-          _hover={{
-            background: "none",
-            color: "orange.500",
-          }}
-        /> */}
 
         <Drawer
           isOpen={isOpen}
@@ -233,8 +205,6 @@ const Navbar = () => {
             </DrawerBody>
           </DrawerContent>
         </Drawer>
-        {/* <Spacer display={["flex", "flex", "flex", "none"]} /> */}
-        {/* <Spacer display="flex" /> */}
         <HStack
           display={["none", "flex", "flex", "flex"]}
           paddingTop="20px"
@@ -253,7 +223,6 @@ const Navbar = () => {
                     size={["xs", "xs", "md", "md"]}
                     width="120px"
                     borderRadius={0}
-                    // leftIcon={<AssignmentIcon />}
                     borderBottom={isActive ? "2px solid brown" : "none"}
                     transition="width 0.5s ease"
                     _hover={{
@@ -299,7 +268,6 @@ const Navbar = () => {
                     size={["xs", "xs", "md", "md"]}
                     width="120px"
                     borderRadius={0}
-                    // leftIcon={<AssignmentIcon />}
                     borderBottom={isActive ? "2px solid brown" : "none"}
                     transition="width 0.5s ease"
                     _hover={{
@@ -345,7 +313,6 @@ const Navbar = () => {
                     size={["xs", "xs", "md", "md"]}
                     width="120px"
                     borderRadius={0}
-                    // leftIcon={<AssignmentIcon />}
                     borderBottom={isActive ? "2px solid brown" : "none"}
                     transition="width 0.5s ease"
                     _hover={{
@@ -391,7 +358,6 @@ const Navbar = () => {
                     size={["xs", "xs", "md", "md"]}
                     width="120px"
                     borderRadius={0}
-                    // leftIcon={<AssignmentIcon />}
                     borderBottom={isActive ? "2px solid brown" : "none"}
                     transition="width 0.5s ease"
                     _hover={{
@@ -417,7 +383,6 @@ const Navbar = () => {
                     }}
                     fontSize={("xs", "sm", "sm", "sm")}
                     fontWeight={isActive ? "bold" : "normal"}
-                    // leftIcon={<InsightsIcon />}
                   >
                     Estadísticas
                   </Button>
@@ -427,7 +392,6 @@ const Navbar = () => {
           </NavLink>
         </HStack>
       </VStack>
-      {/* <Spacer display={["none", "none", "flex", "flex"]} /> */}
     </Flex>
   );
 };
