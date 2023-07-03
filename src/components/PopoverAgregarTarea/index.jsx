@@ -34,7 +34,13 @@ const TextInput = forwardRef((props, ref) => {
   const [taskTitle, setTaskTitle] = useState(props.defaultValue);
   return (
     <FormControl>
-      <FormLabel htmlFor={props.id}>{props.label}</FormLabel>
+      <FormLabel
+        htmlFor={props.id}
+        fontSize={["sm", "sm", "md", "md"]}
+        color="orange.800"
+      >
+        {props.label}
+      </FormLabel>
       <Input
         ref={ref}
         id={props.id}
@@ -53,7 +59,13 @@ const DatePicker = forwardRef((props, ref) => {
   const [taskDate, setTaskDate] = useState(props.defaultValue);
   return (
     <FormControl>
-      <FormLabel htmlFor={props.id}>{props.label}</FormLabel>
+      <FormLabel
+        htmlFor={props.id}
+        fontSize={["sm", "sm", "md", "md"]}
+        color="orange.800"
+      >
+        {props.label}
+      </FormLabel>
       <Input
         ref={ref}
         id={props.id}
@@ -117,14 +129,29 @@ const Form = ({ firstFieldRef, onCancel, onTasksReload }) => {
           label="Nombre de la tarea"
           id="taskTitle"
           ref={firstFieldRef}
+          fontSize={["sm", "sm", "md", "md"]}
+          color="orange.900"
         />
-        <DatePicker label="Fecha de entrega" id="dueDate" />
+        <DatePicker
+          label="Fecha de entrega"
+          id="dueDate"
+          color="orange.900"
+          fontSize={["sm", "sm", "md", "md"]}
+        />
         {/* <VolunteerSelect label="Voluntario" id="volunteer" /> */}
         <ButtonGroup display="flex" justifyContent="flex-end">
-          <Button variant="outline" onClick={onCancel}>
+          <Button
+            variant="outline"
+            onClick={onCancel}
+            fontSize={["sm", "sm", "md", "md"]}
+          >
             Cancelar
           </Button>
-          <Button colorScheme="orange" type="submit">
+          <Button
+            colorScheme="orange"
+            type="submit"
+            fontSize={["sm", "sm", "md", "md"]}
+          >
             Agregar Tarea
           </Button>
         </ButtonGroup>
@@ -149,7 +176,11 @@ const PopoverAgregarTarea = ({ onTasksReload }) => {
         closeOnBlur={false}
       >
         <PopoverTrigger>
-          <Button rightIcon={<EditIcon />} colorScheme="orange">
+          <Button
+            rightIcon={<EditIcon />}
+            colorScheme="orange"
+            fontSize={["sm", "sm", "md", "md"]}
+          >
             Agregar Tarea
           </Button>
         </PopoverTrigger>

@@ -1,8 +1,14 @@
 import Navbar from "../Navbar";
-import { Heading, Container, Spinner } from "@chakra-ui/react";
+import {
+  Heading,
+  Container,
+  Spinner,
+  useDisclosure,
+  ScaleFade,
+} from "@chakra-ui/react";
 import TaskContainer from "../TaskContainer";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import SpinnerLoad from "../SpinnerLoad";
 
@@ -11,6 +17,8 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   let { category } = useParams();
+
+  let location = useLocation();
 
   const getTasks = async () => {
     const API_ENDPOINT =
@@ -45,13 +53,23 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <Container alignItems="left" marginTop={10} color="orange.500" px={6}>
-        <Heading as="h1" size="3xl" noOfLines={1}>
-          {category === "today"
+      <Container
+        alignItems="left"
+        marginTop={[10, 20, 20, 20, 20]}
+        color="orange.700"
+        px={6}
+      >
+        <Heading
+          as="h1"
+          size={["lg", "lg", "xl", "xl"]}
+          color="orange.900"
+          noOfLines={1}
+        >
+          {location.pathname === "/today"
             ? "Hoy"
-            : category === "upcoming"
+            : location.pathname === "/upcoming"
             ? "Más Adelante"
-            : "Mis Tareas"}
+            : "Todas las tareas"}
         </Heading>
         {loading ? (
           <SpinnerLoad />
