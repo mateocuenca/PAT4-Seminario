@@ -104,6 +104,10 @@ const Navbar = () => {
                       color={isActive ? "orange.700" : "orange.500"}
                       fontSize={["xs", "xs", "md", "md"]}
                       fontWeight={isActive ? "bold" : "normal"}
+                      _hover={{
+                        background: "none",
+                        color: "orange.500",
+                      }}
                     >
                       {<LogoutIcon sx={{ marginRight: "8px" }} />}
                       Cerrar Sesión

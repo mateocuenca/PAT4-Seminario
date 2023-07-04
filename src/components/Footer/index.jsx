@@ -1,6 +1,5 @@
-import { Icon, Link, Text, VStack } from "@chakra-ui/react";
+import { Text, VStack } from "@chakra-ui/react";
 import React from "react";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Footer = () => {
   return (

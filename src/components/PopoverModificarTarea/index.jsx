@@ -13,6 +13,7 @@ import {
   PopoverTrigger,
   Stack,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import FocusLock from "react-focus-lock";
 import React, { forwardRef, useRef, useState } from "react";
@@ -88,6 +89,8 @@ const Form = ({
 }) => {
   taskData.idTarea = taskId;
 
+  const toast = useToast();
+
   const API_ENDPOINT =
     "https://fundacion-soles-a03e1e3a84ae.herokuapp.com/tareas/" + taskId;
 
@@ -104,6 +107,13 @@ const Form = ({
     try {
       const response = await axios.put(API_ENDPOINT, taskData, config);
       onCancel();
+      toast({
+        title: "¡Tarea modificada!",
+        description: "La tarea se ha modificado exitosamente",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
       onTasksReload();
     } catch (error) {
       console.log(error);

@@ -13,6 +13,7 @@ import {
   Select,
   Stack,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import FocusLock from "react-focus-lock";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
@@ -97,6 +98,8 @@ const VolunteerSelect = forwardRef((props, ref) => {
  */
 // 2. Create the form
 const Form = ({ firstFieldRef, onCancel, onTasksReload }) => {
+  const toast = useToast();
+
   const API_ENDPOINT =
     "https://fundacion-soles-a03e1e3a84ae.herokuapp.com/tareas";
 
@@ -113,6 +116,13 @@ const Form = ({ firstFieldRef, onCancel, onTasksReload }) => {
     try {
       const response = await axios.post(API_ENDPOINT, taskData, config);
       onCancel();
+      toast({
+        title: "¡Tarea añadida!",
+        description: "La tarea se ha añadido exitosamente",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
       onTasksReload();
     } catch (error) {
       console.log(error);
