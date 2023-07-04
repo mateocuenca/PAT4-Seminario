@@ -10,18 +10,21 @@ import {
   Alert,
   AlertIcon,
   AlertTitle,
+  AlertDescription,
   Card,
   CardHeader,
   CardBody,
   Heading,
   CardFooter,
+  HStack,
 } from "@chakra-ui/react";
 
-import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import solesLogo from "/public/soles-logo.png";
 import axios from "axios";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { AuthContext } from "../CheckSession";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -30,6 +33,10 @@ const Login = () => {
   const handleVisibleClick = () => setShow(!show);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const searchParams = new URLSearchParams(location.search);
+  const errorNotLoggedIn = searchParams.get("error");
+
+  const { setUser } = useContext(AuthContext);
 
   const handleLogin = async (e) => {
     const API_ENDPOINT =
@@ -52,11 +59,18 @@ const Login = () => {
       // Send a POST request to the login API
       const response = await axios.post(API_ENDPOINT, loginData, config);
 
+      sessionStorage.setItem("role", response.data.roles[0]);
+
       // Save username to session storage
       sessionStorage.setItem("username", username);
 
+      // Save user to context
+      setUser(response.data);
+
       // Save the token to session storage or state for future use if needed
       sessionStorage.setItem("token", response.data.accessToken);
+
+      // sessionStorage.setItem("role", response.data.role);
 
       // Redirect to the '/home' route
       navigate("/home");
@@ -79,6 +93,23 @@ const Login = () => {
   return (
     <Container centerContent height="100vh" justifyContent="space-around">
       <Card p={6} bgGradient="linear(to-r, #faf5e5, #Faf5e5)" shadow="2xl">
+        {errorNotLoggedIn && (
+          <Alert
+            status="error"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            textAlign="center"
+          >
+            <HStack>
+              <AlertIcon />
+              <AlertTitle>Error!</AlertTitle>
+            </HStack>
+            <AlertDescription fontSize={["sm", "sm", "md", "md"]}>
+              Debes iniciar sesión para acceder a esta página
+            </AlertDescription>
+          </Alert>
+        )}
         <VStack spacing={2}>
           <Image w="15rem" src={solesLogo} p={4}></Image>
           <CardHeader>

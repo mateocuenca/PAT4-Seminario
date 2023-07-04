@@ -28,9 +28,17 @@ import TodayIcon from "@mui/icons-material/Today";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useContext } from "react";
+import { AuthContext } from "../CheckSession";
+
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
+  const { setUser } = useContext(AuthContext);
+
+  const handlelogout = () => {
+    setUser(null);
+  };
 
   return (
     <Flex
@@ -108,6 +116,7 @@ const Navbar = () => {
                         background: "none",
                         color: "orange.500",
                       }}
+                      handlelogout={handlelogout}
                     >
                       {<LogoutIcon sx={{ marginRight: "8px" }} />}
                       Cerrar Sesión

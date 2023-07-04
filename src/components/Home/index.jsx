@@ -1,14 +1,25 @@
 import Navbar from "../Navbar";
-import { Heading, Container } from "@chakra-ui/react";
+import {
+  Heading,
+  Container,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
 import TaskContainer from "../TaskContainer";
-import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Navigate, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import SpinnerLoad from "../SpinnerLoad";
+import { AuthContext } from "../CheckSession";
 
 const Home = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { user } = useContext(AuthContext);
 
   let location = useLocation();
 
@@ -41,6 +52,14 @@ const Home = () => {
   useEffect(() => {
     getTasks();
   }, []);
+
+  if (!user) {
+    return (
+      <>
+        <Navigate to="/login/?error=notLoggedIn" replace />;
+      </>
+    );
+  }
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../Navbar";
 import {
   CardBody,
@@ -31,8 +31,20 @@ import {
 } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
 import Footer from "../Footer";
+import { AuthContext } from "../CheckSession";
+import { Navigate } from "react-router-dom";
 
 const Statistics = () => {
+  const { user } = useContext(AuthContext);
+
+  if (!user) {
+    return (
+      <>
+        <Navigate to="/login/?error=notLoggedIn" replace />;
+      </>
+    );
+  }
+
   return (
     <>
       <Navbar />
