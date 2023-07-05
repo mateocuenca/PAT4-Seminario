@@ -120,6 +120,11 @@ const Task = (props) => {
           size="sm"
           color="red"
           onClick={handleDeleteTask}
+          display={
+            sessionStorage.getItem("role") === "ROLE_COORDINADOR"
+              ? "flex"
+              : "none"
+          }
         />
       </HStack>
       <HStack justifyContent="start" py={2} px={10}>

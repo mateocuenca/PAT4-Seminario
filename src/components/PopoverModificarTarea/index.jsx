@@ -180,7 +180,16 @@ const PopoverModificarTarea = ({
         closeOnBlur={false}
       >
         <PopoverTrigger>
-          <IconButton size="sm" icon={<EditIcon />} color="orange.700" />
+          <IconButton
+            size="sm"
+            icon={<EditIcon />}
+            color="orange.700"
+            display={
+              sessionStorage.getItem("role") === "ROLE_COORDINADOR"
+                ? "flex"
+                : "none"
+            }
+          />
         </PopoverTrigger>
         <PopoverContent p={5}>
           <FocusLock returnFocus persistentFocus={false}>

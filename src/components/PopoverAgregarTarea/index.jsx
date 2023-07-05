@@ -187,6 +187,11 @@ const PopoverAgregarTarea = ({ onTasksReload }) => {
             rightIcon={<EditIcon />}
             colorScheme="orange"
             fontSize={["sm", "sm", "md", "md"]}
+            display={
+              sessionStorage.getItem("role") === "ROLE_COORDINADOR"
+                ? "flex"
+                : "none"
+            }
           >
             Agregar Tarea
           </Button>

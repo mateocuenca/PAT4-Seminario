@@ -70,7 +70,7 @@ const Statistics = () => {
           <Stat>
             <StatNumber>2400</StatNumber>
             <StatLabel fontSize={16}>Tareas completadas</StatLabel>
-            <StatHelpText>
+            <StatHelpText marginTop={4}>
               <StatArrow type="increase" />
               23.36% más respecto al mes anterior
             </StatHelpText>
@@ -98,6 +98,11 @@ const Statistics = () => {
               fontSize={["sm", "sm", "md", "md"]}
               defaultValue={"option1"}
               marginTop={2}
+              display={
+                sessionStorage.getItem("role") === "ROLE_COORDINADOR"
+                  ? "flex"
+                  : "none"
+              }
             >
               <option value="option1">Todas las áreas</option>
               <option value="option1">Área 1</option>
@@ -113,7 +118,9 @@ const Statistics = () => {
                   colorScheme="orange"
                   size={["sm", "md", "md", "md"]}
                   marginTop={2}
-                  shadow="lg"
+                  shadow="xl"
+                  border="1px"
+                  borderColor="orange.100"
                 >
                   <TableCaption>
                     200 tareas completadas en los últimos 7 días
@@ -169,6 +176,9 @@ const Statistics = () => {
                   variant="striped"
                   colorScheme="orange"
                   size={["sm", "md", "md", "md"]}
+                  shadow="xl"
+                  border="1px"
+                  borderColor="orange.100"
                 >
                   <TableCaption>
                     680 tareas completadas en los últimos 30 días
