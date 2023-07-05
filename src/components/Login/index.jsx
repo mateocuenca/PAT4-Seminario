@@ -187,14 +187,7 @@ const Login = () => {
               Iniciar Sesión
             </Button>
           </form>
-          <CardFooter>
-            <NavLink
-              to="/"
-              style={{ color: "#FFA600", fontWeight: "bold", fontSize: "15px" }}
-            >
-              ¿No tienes cuenta? Regístrate
-            </NavLink>
-          </CardFooter>
+          <CardFooter></CardFooter>
         </CardBody>
       </Card>
     </Container>
