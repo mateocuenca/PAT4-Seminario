@@ -66,23 +66,46 @@ const TaskContainer = ({ tasks, onTasksReload }) => {
         spacing={4}
         align="stretch"
       >
-        {tasksByCategory
-          .sort((a, b) => {
-            const dateA = stringToDate(a.fechaFinalizacion);
-            const dateB = stringToDate(b.fechaFinalizacion);
-            return dateA - dateB;
-          })
-          .map((task) => (
-            <Task
-              taskTitle={task.descripcion}
-              taskDate={stringToDate(task.fechaFinalizacion)}
-              taskDateString={convertDateFormat(task.fechaFinalizacion)}
-              taskOwner={task.nombreVoluntario}
-              taskId={task.idTarea}
-              onTasksReload={onTasksReload}
-              key={task.idTarea}
-            />
-          ))}
+        {sessionStorage.getItem("role") === "ROLE_VOLUNTARIO"
+          ? tasksByCategory
+              .sort((a, b) => {
+                const dateA = stringToDate(a.fechaFinalizacion);
+                const dateB = stringToDate(b.fechaFinalizacion);
+                return dateA - dateB;
+              })
+              .filter((task) => task.voluntario.nombre === "Lucas")
+              .map((task) => (
+                <Task
+                  taskTitle={task.descripcion}
+                  taskDate={stringToDate(task.fechaFinalizacion)}
+                  taskDateString={convertDateFormat(task.fechaFinalizacion)}
+                  taskOwner={
+                    task.voluntario.nombre + " " + task.voluntario.apellido
+                  }
+                  taskId={task.idTarea}
+                  onTasksReload={onTasksReload}
+                  key={task.idTarea}
+                />
+              ))
+          : tasksByCategory
+              .sort((a, b) => {
+                const dateA = stringToDate(a.fechaFinalizacion);
+                const dateB = stringToDate(b.fechaFinalizacion);
+                return dateA - dateB;
+              })
+              .map((task) => (
+                <Task
+                  taskTitle={task.descripcion}
+                  taskDate={stringToDate(task.fechaFinalizacion)}
+                  taskDateString={convertDateFormat(task.fechaFinalizacion)}
+                  taskOwner={
+                    task.voluntario.nombre + " " + task.voluntario.apellido
+                  }
+                  taskId={task.idTarea}
+                  onTasksReload={onTasksReload}
+                  key={task.idTarea}
+                />
+              ))}
         <PopoverAgregarTarea onTasksReload={onTasksReload} />
       </VStack>
       <Footer />

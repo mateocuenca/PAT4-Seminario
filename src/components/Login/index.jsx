@@ -93,7 +93,7 @@ const Login = () => {
   return (
     <Container centerContent height="100vh" justifyContent="space-around">
       <Card p={6} bgGradient="linear(to-r, #faf5e5, #Faf5e5)" shadow="2xl">
-        {errorNotLoggedIn && (
+        {/* {errorNotLoggedIn && (
           <Alert
             status="error"
             flexDirection="column"
@@ -109,7 +109,7 @@ const Login = () => {
               Debes iniciar sesión para acceder a esta página
             </AlertDescription>
           </Alert>
-        )}
+        )} */}
         <VStack spacing={2}>
           <Image w="15rem" src={solesLogo} p={4}></Image>
           <CardHeader>

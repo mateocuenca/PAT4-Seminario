@@ -10,7 +10,6 @@ import {
   PopoverCloseButton,
   PopoverContent,
   PopoverTrigger,
-  Select,
   Stack,
   useDisclosure,
   useToast,
@@ -18,8 +17,9 @@ import {
 import FocusLock from "react-focus-lock";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import axios from "axios";
+import Select from "react-select";
 
-const taskData = { voluntario: null };
+const taskData = {};
 
 function formatDate(dateString) {
   const parts = dateString.split("-"); // Split the date string by dashes
@@ -78,24 +78,61 @@ const DatePicker = forwardRef((props, ref) => {
   );
 });
 
-/* // 3. Create a volunteer select component
+// 3. Create a volunteer select component
 const VolunteerSelect = forwardRef((props, ref) => {
+  const [volunteer, setVolunteer] = useState({});
+
+  const handleSelectChange = (selectedOption) => {
+    setVolunteer(selectedOption.value);
+  };
+
+  const options = [
+    {
+      value: {
+        id: 104,
+        nombre: "Lucas",
+        apellido: "Gomez",
+        direccion: null,
+        telefono: 0,
+        correo: null,
+        disponibilidadHoraria: null,
+        area: null,
+      },
+      label: "Lucas Gomez",
+    },
+    {
+      value: {
+        id: 84,
+        nombre: "Silvia",
+        apellido: "Montes",
+        direccion: null,
+        telefono: 0,
+        correo: null,
+        disponibilidadHoraria: null,
+        area: null,
+      },
+      label: "Silvia Montes",
+    },
+  ];
+
   return (
     <FormControl>
-      <FormLabel htmlFor={props.id}>{props.label}</FormLabel>
+      <FormLabel htmlFor={props.id} fontSize={["sm", "sm", "md", "md"]}>
+        {props.label}
+      </FormLabel>
       <Select
         ref={ref}
         id={props.id}
         {...props}
+        options={options}
         placeholder="Seleccionar voluntario"
-      >
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-      </Select>
+        name="volunteerSelect"
+        // onChange={handleSelectChange}
+      ></Select>
     </FormControl>
   );
 });
- */
+
 // 2. Create the form
 const Form = ({ firstFieldRef, onCancel, onTasksReload }) => {
   const toast = useToast();
@@ -145,7 +182,14 @@ const Form = ({ firstFieldRef, onCancel, onTasksReload }) => {
           color="orange.900"
           fontSize={["sm", "sm", "md", "md"]}
         />
-        {/* <VolunteerSelect label="Voluntario" id="volunteer" /> */}
+
+        <VolunteerSelect
+          label="Seleccionar voluntario"
+          id="volunteer"
+          color="orange.900"
+          fontSize={["sm", "sm", "md", "md"]}
+        />
+
         <ButtonGroup display="flex" justifyContent="flex-end">
           <Button
             variant="outline"

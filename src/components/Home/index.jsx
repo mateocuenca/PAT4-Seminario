@@ -53,13 +53,13 @@ const Home = () => {
     getTasks();
   }, []);
 
-  if (!user) {
-    return (
-      <>
-        <Navigate to="/login/?error=notLoggedIn" replace />;
-      </>
-    );
-  }
+  // if (!user) {
+  //   return (
+  //     <>
+  //       <Navigate to="/login/?error=notLoggedIn" replace />;
+  //     </>
+  //   );
+  // }
 
   return (
     <>

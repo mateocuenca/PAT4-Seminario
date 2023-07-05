@@ -162,7 +162,7 @@ const Task = (props) => {
         </Text>
         <Text
           fontSize={("xs", "sm", "sm", "sm")}
-          color="orange.500"
+          color={props.taskOwner === "Lucas Gomez" ? "black" : "blue.500"}
           fontWeight="bold"
           display="flex"
           alignItems="center"

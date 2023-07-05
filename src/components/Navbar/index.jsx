@@ -116,7 +116,7 @@ const Navbar = () => {
                         background: "none",
                         color: "orange.500",
                       }}
-                      handlelogout={handlelogout}
+                      onClick={handlelogout}
                     >
                       {<LogoutIcon sx={{ marginRight: "8px" }} />}
                       Cerrar Sesión
