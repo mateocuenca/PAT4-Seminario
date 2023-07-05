@@ -12,13 +12,18 @@ Con el objetivo de optimizar la asignación de tareas a voluntarios de la fundac
 
 ## Para acceder a la aplicación
 
-Haga click [aquí](https://pat-4-seminario-git-development-mateocuenca.vercel.app/login) para acceder al mvp de la aplicación
+Haga click [aquí](https://pat-4-seminario-git-development-mateocuenca.vercel.app/) para acceder al mvp de la aplicación. 
+
+En el Login, ingresar con los siguientes datos de usuario:
+
+* Usuario: "lucasvoluntario"
+* Contraseña: "1234"
 
 ## Tecnologías aplicadas
-* HTML5
-* CSS
 * Javascript
 * React
+* React-Router
+* Axios
 * Chackra-UI
 * Material-UI Icons
 
